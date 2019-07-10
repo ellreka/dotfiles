@@ -8,11 +8,11 @@ Plug 'tpope/vim-commentary'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'bronson/vim-trailing-whitespace'
-Plug 'sheerun/vim-polyglot' 
+Plug 'sheerun/vim-polyglot'
 Plug 'tomasr/molokai'
 Plug 'w0rp/ale'
-" Plug 'SirVer/ultisnips'
-" Plug 'honza/vim-snippets'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
@@ -51,7 +51,7 @@ nnoremap k gk
 " シンタックスハイライトの有効化
 syntax enable
 " Tab文字を半角スペースにする
-set expandtab
+" set expandtab
 " 行頭以外のTab文字の表示幅（スペースいくつ分）
 set tabstop=4
 " 行頭でのTab文字の表示幅
@@ -84,14 +84,14 @@ let NERDTreeShowHidden=1
 nnoremap <silent> <C-e> :NERDTreeFind<CR>
 nnoremap <silent> <F3> :NERDTreeToggle<CR>
 
-" theme molakai
+" theme molokai
 syntax on
 colorscheme molokai
 set t_Co=256
 highlight Normal ctermbg=none
 
 " vim-airline
-let g:airline_theme = 'molakai'
+let g:airline_theme = 'molokai'
 let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -106,10 +106,10 @@ nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 " snippets
-" let g:UltiSnipsExpandTrigger="<tab>"
-" let g:UltiSnipsJumpForwardTrigger="<tab>"
-" let g:UltiSnipsJumpBackwardTrigger="<c-b>"
-" let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<c-b>"
+let g:UltiSnipsEditSplit="vertical"
 
 " クリップボードからペーストしたときにインデントしない
 if &term =~ "xterm"
