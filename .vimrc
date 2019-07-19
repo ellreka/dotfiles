@@ -63,7 +63,8 @@ nnoremap <Tab> gt
 nnoremap s l
 vnoremap s l
 snoremap s l
-
+" lを<C-w>
+nnoremap l <C-w>
 " search
 set incsearch " インクリメンタルサーチ. １文字入力毎に検索を行う
 set ignorecase " 検索パターンに大文字小文字を区別しない
