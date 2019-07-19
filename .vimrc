@@ -20,6 +20,7 @@ Plug 'prettier/vim-prettier', {
 Plug 'gorodinskiy/vim-coloresque'
 Plug 'cohama/lexima.vim'
 Plug 'rhysd/accelerated-jk'
+Plug 'tpope/vim-fugitive'
 call plug#end()
 
 " setting
@@ -51,7 +52,7 @@ nnoremap k gk
 " シンタックスハイライトの有効化
 syntax enable
 " Tab文字を半角スペースにする
-" set expandtab
+set expandtab
 " 行頭以外のTab文字の表示幅（スペースいくつ分）
 set tabstop=4
 " 行頭でのTab文字の表示幅
@@ -60,8 +61,9 @@ set shiftwidth=4
 nnoremap <Tab> gt
 " sで右に移動
 nnoremap s l
-" lでカーソル位置の文字を削除して挿入モードを開始
-nnoremap l s
+vnoremap s l
+snoremap s l
+
 " search
 set incsearch " インクリメンタルサーチ. １文字入力毎に検索を行う
 set ignorecase " 検索パターンに大文字小文字を区別しない
@@ -88,7 +90,6 @@ nnoremap <silent> <F3> :NERDTreeToggle<CR>
 syntax on
 colorscheme molokai
 set t_Co=256
-highlight Normal ctermbg=none
 
 " vim-airline
 let g:airline_theme = 'molokai'
@@ -100,6 +101,7 @@ let g:airline_skip_empty_sections = 1
 set ttimeoutlen=50
 
 " ale
+let b:ale_linters = ['eslint']
 " 保存時に実行
 let g:ale_fix_on_save = 1
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
@@ -112,15 +114,15 @@ let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 let g:UltiSnipsEditSplit="vertical"
 
 " クリップボードからペーストしたときにインデントしない
-if &term =~ "xterm"
-    let &t_SI .= "\e[?2004h"
-    let &t_EI .= "\e[?2004l"
-    let &pastetoggle = "\e[201~"
+" if &term =~ "xterm"
+"     let &t_SI .= "\e[?2004h"
+"     let &t_EI .= "\e[?2004l"
+"     let &pastetoggle = "\e[201~"
 
-    function XTermPasteBegin(ret)
-        set paste
-        return a:ret
-    endfunction
+"     function XTermPasteBegin(ret)
+"         set paste
+"         return a:ret
+"     endfunction
 
-    inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
-endif
+"     inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
+" endif
