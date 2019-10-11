@@ -60,6 +60,8 @@ set tabstop=4
 set shiftwidth=4
 " タブ可視化
 set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
+" sを<C-w>
+nnoremap s <C-w>
 " タブ移動
 nnoremap <Tab> gt
 nnoremap <S-Tab> gT
