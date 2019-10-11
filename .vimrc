@@ -10,7 +10,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'sheerun/vim-polyglot'
 Plug 'tomasr/molokai'
-Plug 'w0rp/ale'
+" Plug 'w0rp/ale'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'prettier/vim-prettier', {
@@ -21,6 +21,7 @@ Plug 'gorodinskiy/vim-coloresque'
 Plug 'cohama/lexima.vim'
 Plug 'rhysd/accelerated-jk'
 Plug 'tpope/vim-fugitive'
+Plug 'editorconfig/editorconfig-vim'
 call plug#end()
 
 " setting
@@ -57,14 +58,11 @@ set expandtab
 set tabstop=4
 " 行頭でのTab文字の表示幅
 set shiftwidth=4
+" タブ可視化
+set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 " タブ移動
 nnoremap <Tab> gt
-" sで右に移動
-nnoremap s l
-vnoremap s l
-snoremap s l
-" lを<C-w>
-nnoremap l <C-w>
+nnoremap <S-Tab> gT
 " search
 set incsearch " インクリメンタルサーチ. １文字入力毎に検索を行う
 set ignorecase " 検索パターンに大文字小文字を区別しない
@@ -113,17 +111,3 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 let g:UltiSnipsEditSplit="vertical"
-
-" クリップボードからペーストしたときにインデントしない
-" if &term =~ "xterm"
-"     let &t_SI .= "\e[?2004h"
-"     let &t_EI .= "\e[?2004l"
-"     let &pastetoggle = "\e[201~"
-
-"     function XTermPasteBegin(ret)
-"         set paste
-"         return a:ret
-"     endfunction
-
-"     inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
-" endif
