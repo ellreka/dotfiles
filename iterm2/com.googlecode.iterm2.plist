@@ -6,6 +6,10 @@
 	<string>DA1FE369-B6B4-4C14-A0CD-E007070661FE</string>
 	<key>HapticFeedbackForEsc</key>
 	<false/>
+	<key>HideFromDockAndAppSwitcher</key>
+	<false/>
+	<key>HideMenuBarInFullscreen</key>
+	<true/>
 	<key>HotkeyMigratedFromSingleToMulti</key>
 	<true/>
 	<key>New Bookmarks</key>
@@ -13,6 +17,18 @@
 		<dict>
 			<key>ASCII Anti Aliased</key>
 			<true/>
+			<key>AWDS Pane Directory</key>
+			<string></string>
+			<key>AWDS Pane Option</key>
+			<string>Recycle</string>
+			<key>AWDS Tab Directory</key>
+			<string></string>
+			<key>AWDS Tab Option</key>
+			<string>No</string>
+			<key>AWDS Window Directory</key>
+			<string></string>
+			<key>AWDS Window Option</key>
+			<string>No</string>
 			<key>Ambiguous Double Width</key>
 			<false/>
 			<key>Ansi 0 Color</key>
@@ -172,10 +188,14 @@
 			</dict>
 			<key>Background Image Location</key>
 			<string></string>
+			<key>Background Image Mode</key>
+			<integer>0</integer>
 			<key>Blinking Cursor</key>
 			<false/>
 			<key>Blur</key>
 			<false/>
+			<key>Blur Radius</key>
+			<real>0.54606417626449744</real>
 			<key>Bold Color</key>
 			<dict>
 				<key>Blue Component</key>
@@ -214,7 +234,7 @@
 			<key>Custom Command</key>
 			<string>No</string>
 			<key>Custom Directory</key>
-			<string>No</string>
+			<string>Advanced</string>
 			<key>Default Bookmark</key>
 			<string>No</string>
 			<key>Description</key>
@@ -264,6 +284,8 @@
 			<false/>
 			<key>Idle Code</key>
 			<integer>0</integer>
+			<key>Initial Use Transparency</key>
+			<true/>
 			<key>Jobs to Ignore</key>
 			<array>
 				<string>rlogin</string>
@@ -611,7 +633,7 @@
 			<key>Terminal Type</key>
 			<string>xterm-256color</string>
 			<key>Transparency</key>
-			<real>0.34556630710659897</real>
+			<real>0.32009827918613082</real>
 			<key>Unlimited Scrollback</key>
 			<false/>
 			<key>Use Bold Font</key>
@@ -667,6 +689,8 @@
 	</dict>
 	<key>SoundForEsc</key>
 	<false/>
+	<key>UIElementRequiresHotkeys</key>
+	<true/>
 	<key>UseLionStyleFullscreen</key>
 	<false/>
 	<key>VisualIndicatorForEsc</key>
