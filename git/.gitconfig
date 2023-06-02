@@ -1,0 +1,9 @@
+[user]
+	email = ellreka5364@gmail.com
+	name = ellreka
+[init]
+  defaultBranch = main
+# [includeIf "gitdir:~/_work/backlog/"]
+#   path = ~/.gitconfig-backlog
+[merge]
+	conflictStyle = diff3
