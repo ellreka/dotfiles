@@ -1,5 +1,6 @@
-call plug#begin('~/.vim/plugged')
+call plug#begin()
 call plug#end()
+
 set number
 set autoindent
 set tabstop=2
