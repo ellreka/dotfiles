@@ -25,4 +25,8 @@ ln -s -f "$DIR/karabiner/dvorak_jis.json" ~/.config/karabiner/assets/complex_mod
 
 # nvim
 mkdir -p ~/.config/nvim
-ln -s -f "$DIR/nvim/init.vim" ~/.config/nvim
+ln -s -f "$DIR/nvim/lua" ~/.config/nvim
+ln -s -f "$DIR/nvim/init.lua" ~/.config/nvim
+
+# Install nerd font
+# brew tap homebrew/cask-fonts && brew install --cask font-hack-nerd-font
