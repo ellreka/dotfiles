@@ -30,3 +30,6 @@ ln -s -f "$DIR/nvim/init.lua" ~/.config/nvim
 
 # Install nerd font
 # brew tap homebrew/cask-fonts && brew install --cask font-hack-nerd-font
+
+# tmux
+ln -s -f "$DIR/tmux/.tmux.conf" ~/.tmux.conf

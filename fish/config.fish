@@ -34,7 +34,7 @@ function colors_set --description 'set colors'
   set -U fish_color_cwd 59C2FF
   set -U fish_color_cwd_root red
   set -U fish_color_valid_path --underline
-  set -U fish_color_autosuggestion 4D5566
+  set -U fish_color_autosuggestion 99a9cc
   set -U fish_color_user brgreen
   set -U fish_color_host normal
   set -U fish_color_cancel --reverse
@@ -62,3 +62,6 @@ fish_vi_key_bindings
 
 set -gx VOLTA_HOME "$HOME/.volta"
 set -gx PATH "$VOLTA_HOME/bin" $PATH
+
+test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
+

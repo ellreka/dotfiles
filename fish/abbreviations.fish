@@ -37,3 +37,5 @@ abbr -a ya 'ni -D'
 abbr -a yd 'nr dev'
 abbr -a yu 'nu'
 abbr -a yui 'nu -i'
+
+abbr -a f 'fvm flutter'
