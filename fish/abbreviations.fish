@@ -23,9 +23,10 @@ abbr -a gca 'git commit --amend'
 abbr -a gst 'git stash -u'
 abbr -a gsa 'git stash apply'
 
-abbr -a gsf 'git branch -a | fzf | xargs git switch'
-
-abbr -a ghpr 'gh pr checkout'
+abbr -a gsf "git branch --sort=-committerdate --format='%(refname:short) | %(contents:subject)' | fzf --preview 'git log --oneline --graph --decorate --color=always \$(echo {} | cut -d \" \" -f1)' | cut -d ' ' -f1 | xargs git switch"
+abbr -a ghc 'gh pr checkout'
+abbr -a ghp 'gh pr list'
+abbr -a ghs "gh pr list | fzf | awk '{print \$1}' | xargs gh pr checkout"
 
 abbr -a rmn 'rm -rf node_modules && narn'
 abbr -a rmnode 'rm -rf node_modules'
@@ -38,4 +39,10 @@ abbr -a yd 'nr dev'
 abbr -a yu 'nu'
 abbr -a yui 'nu -i'
 
+# flutter
 abbr -a f 'fvm flutter'
+abbr -a fp 'fvm flutter pub'
+abbr -a fr 'make run DEVICE_ID='
+abbr -a fra 'make run DEVICE_ID=emulator-5554'
+# abbr -a fr 'fvm flutter run -d 07799682-C348-4953-891D-1DFAF89303BE --dart-define-from-file=main_define_from_file.json'
+# abbr -a fr-and 'fvm flutter run -d emulator-5554 --dart-define-from-file=main_define_from_file.json'

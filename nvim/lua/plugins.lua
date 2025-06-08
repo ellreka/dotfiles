@@ -1,253 +1,234 @@
-local neovim_plugins = {{
-    -- https://github.com/Shatur/neovim-ayu
-    'Shatur/neovim-ayu',
-    lazy = false,
-    config = function()
-        require('ayu').setup({
-            mirage = true
-        })
-        require('ayu').colorscheme()
-    end
+local neovim_plugins = { {
+  -- https://github.com/Shatur/neovim-ayu
+  'Shatur/neovim-ayu',
+  lazy = false,
+  config = function()
+    require('ayu').setup({
+      mirage = true
+    })
+    require('ayu').colorscheme()
+  end
 }, {
-    -- https://github.com/nvim-treesitter/nvim-treesitter
-    'nvim-treesitter/nvim-treesitter',
-    lazy = false,
-    config = function()
-        require('nvim-treesitter.configs').setup({
-            ensure_installed = {"tsx", "typescript", "javascript", "fish", "php", "json", "yaml", "css", "html", "lua"},
-            highlight = {
-                enable = true
-            },
-            indent = {
-                enable = true
-            }
-        })
-    end
-}}
+  -- https://github.com/nvim-treesitter/nvim-treesitter
+  'nvim-treesitter/nvim-treesitter',
+  lazy = false,
+  config = function()
+    require('nvim-treesitter.configs').setup({
+      ensure_installed = { "tsx", "typescript", "javascript", "fish", "php", "json", "yaml", "css", "html", "lua" },
+      highlight = {
+        enable = true
+      },
+      indent = {
+        enable = true
+      }
+    })
+  end
+} }
 
-local common_plugins = {{
-    -- https://github.com/numToStr/Comment.nvim
-    'numToStr/Comment.nvim',
-    opts = {},
-    lazy = false
-}, {
-    -- https://github.com/nvim-tree/nvim-tree.lua
+local common_plugins = {
+  {
+    'echasnovski/mini.indentscope',
+    version = '*',
+    config = function()
+      require('mini.indentscope').setup()
+    end
+  },
+  {
+    'echasnovski/mini.cursorword',
+    lazy = false,
+    version = '*',
+    config = function()
+      require('mini.cursorword').setup()
+    end
+  },
+  {
+    'echasnovski/mini.surround',
+    lazy = false,
+    version = '*',
+    config = function()
+      require('mini.surround').setup()
+    end
+  },
+  {
+    'echasnovski/mini.trailspace',
+    version = '*',
+    config = function()
+      require('mini.trailspace').setup()
+    end
+  },
+  -- https://github.com/nvim-tree/nvim-tree.lua
+  {
     'nvim-tree/nvim-tree.lua',
     lazy = false,
-    dependencies = {'nvim-tree/nvim-web-devicons'},
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
-        require('nvim-tree').setup({
-            sort_by = 'case_sensitive',
-            view = {
-                adaptive_size = true
-            },
-            renderer = {
-                group_empty = true
-            },
-            filters = {
-                dotfiles = true
-            }
-        })
+      require('nvim-tree').setup({
+        sort_by = 'case_sensitive',
+        view = {
+          adaptive_size = true,
+        },
+        renderer = {
+          group_empty = true
+        },
+        filters = {
+          dotfiles = true
+        }
+      })
     end
-}, {
-    -- https://github.com/nvim-lualine/lualine.nvim
+  },
+  -- https://github.com/nvim-lualine/lualine.nvim
+  {
     'nvim-lualine/lualine.nvim',
     lazy = false,
-    dependencies = {'nvim-tree/nvim-web-devicons'},
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
-        require('lualine').setup({
-            options = {
-                theme = 'ayu_mirage'
-            }
-        })
+      require('lualine').setup({
+        options = {
+          theme = 'ayu_mirage'
+        }
+      })
     end
-}, -- https://github.com/nvim-telescope/telescope.nvim
-{
+  },
+  -- https://github.com/nvim-telescope/telescope.nvim
+  {
     'nvim-telescope/telescope.nvim',
-    tag = '0.1.5',
+    tag = '0.1.8',
     lazy = false,
-    dependencies = {'nvim-lua/plenary.nvim', 'nvim-telescope/telescope-file-browser.nvim',
-                    'nvim-tree/nvim-web-devicons', 'nvim-telescope/telescope-fzf-native.nvim'},
+    dependencies = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope-file-browser.nvim',
+      'nvim-tree/nvim-web-devicons', 'nvim-telescope/telescope-fzf-native.nvim' },
     config = function()
-        require("telescope").load_extension("file_browser")
-        require("telescope").setup({
-            extensions = {
-                file_browser = {
-                    theme = "ayu-mirage"
-                },
-                fzf = {
-                    fuzzy = true,
-                    override_generic_sorter = true,
-                    override_file_sorter = true,
-                    case_mode = "smart_case"
-                }
-            },
-            defaults = {
-                -- initial_mode = "normal",
-                hidden = true
-            },
-            hidden = true,
-            cwd = vim.fn.expand("%:p:h")
-        })
-        vim.keymap.set('n', '<Leader>f', '<cmd>Telescope file_browser path=%:p:h select_buffer=true hidden=true<CR>')
-        vim.keymap.set('n', '<Leader>ff', '<cmd>Telescope find_files cwd=%:p:h<CR>')
-        vim.keymap.set('n', '<Leader>fg', '<cmd>Telescope live_grep<CR>')
-        vim.keymap.set('n', '<Leader>fb', '<cmd>Telescope buffers<CR>')
+      require("telescope").load_extension("file_browser")
+      require("telescope").setup({
+        extensions = {
+          file_browser = {
+            theme = "ayu-mirage"
+          },
+          fzf = {
+            fuzzy = true,
+            override_generic_sorter = true,
+            override_file_sorter = true,
+            case_mode = "smart_case"
+          }
+        },
+        defaults = {
+          -- initial_mode = "normal",
+          hidden = true
+        },
+        hidden = true,
+        cwd = vim.fn.expand("%:p:h")
+      })
+      vim.keymap.set('n', '<Leader>f', '<cmd>Telescope file_browser path=%:p:h select_buffer=true hidden=true<CR>')
+      vim.keymap.set('n', '<Leader>ff', '<cmd>Telescope find_files cwd=%:p:h<CR>')
+      vim.keymap.set('n', '<Leader>fg', '<cmd>Telescope live_grep<CR>')
+      vim.keymap.set('n', '<Leader>fb', '<cmd>Telescope buffers<CR>')
     end
-}, -- https://github.com/akinsho/toggleterm.nvim
-{
+  },
+  -- https://github.com/akinsho/toggleterm.nvim
+  {
     'akinsho/toggleterm.nvim',
     version = "*",
     lazy = false,
     config = function()
-        require("toggleterm").setup({
-            size = 10,
-            open_mapping = [[<leader>t]],
-            insert_mappings = false,
-            hide_numbers = true,
-            shade_filetypes = {},
-            shade_terminals = true,
-            shading_factor = 2,
-            start_in_insert = true,
-            persist_size = true
-        })
+      require("toggleterm").setup({
+        size = 10,
+        open_mapping = [[<leader>t]],
+        insert_mappings = false,
+        hide_numbers = true,
+        shade_filetypes = {},
+        shade_terminals = true,
+        shading_factor = 2,
+        start_in_insert = true,
+        persist_size = true
+      })
     end
-}, -- https://github.com/romgrk/barbar.nvim
-{
+  },
+  -- https://github.com/romgrk/barbar.nvim
+  {
     'romgrk/barbar.nvim',
-    dependencies = {'lewis6991/gitsigns.nvim', 'nvim-tree/nvim-web-devicons'},
+    dependencies = { 'lewis6991/gitsigns.nvim', 'nvim-tree/nvim-web-devicons' },
     init = function()
-        vim.g.barbar_auto_setup = false
+      vim.g.barbar_auto_setup = false
     end,
     opts = {
-        -- lazy.nvim will automatically call setup for you. put your options here, anything missing will use the default:
-        -- animation = true,
-        -- insert_at_start = true,
-        -- …etc.
+      sidebar_filetypes = {
+        NvimTree = true,
+      }
     },
     version = '^1.7.0'
-}, -- https://github.com/windwp/nvim-autopairs
-{
+  },
+  -- https://github.com/windwp/nvim-autopairs
+  {
     'windwp/nvim-autopairs',
     event = 'InsertEnter',
     opts = {}
-}, -- https://github.com/stevearc/conform.nvim
-{
-    'stevearc/conform.nvim',
-    opts = {},
-    config = function()
-        local conform = require('conform')
-        conform.setup({
-            formatters_by_ft = {
-                javascript = {"prettier"},
-                typescript = {"prettier"},
-                typescriptreact = {"prettier"}
-            },
-            format_on_save = {
-                lsp_fallback = true,
-                timeout_ms = 500
-            }
-        })
-        vim.keymap.set({'n', 'v'}, '<Leader>l', function(args)
-            conform.format({
-                async = true,
-                lsp_fallback = false
-            })
-        end)
-    end
-}, -- LSP
-{
-    "williamboman/mason.nvim",
+  },
+  -- LSP
+  {
+    "mason-org/mason.nvim",
     build = ":MasonUpdate",
+    cmd = { "Mason", "MasonUpdate", "MasonLog", "MasonInstall", "MasonUninstall", "MasonUninstallAll" },
+    config = true,
     opts = {}
-}, {
-    "williamboman/mason-lspconfig.nvim",
-    dependencies = {"williamboman/mason.nvim", "neovim/nvim-lspconfig", "onsails/lspkind-nvim", "hrsh7th/nvim-cmp",
-                    'hrsh7th/cmp-nvim-lsp', 'hrsh7th/cmp-buffer', 'hrsh7th/cmp-path', 'hrsh7th/vim-vsnip',
-                    'hrsh7th/cmp-vsnip'},
-    config = function()
-        -- nvim-cmp
-        local cmp = require('cmp')
-        local lspkind = require('lspkind')
-        cmp.setup({
-            enabled = true,
-            snippet = {
-                expand = function(args)
-                    vim.fn["vsnip#anonymous"](args.body)
-                end
-            },
-            sources = {{
-                name = "nvim_lsp"
-            }, {
-                name = 'vsnip'
-            }, {
-                name = "buffer"
-            }, {
-                name = "path"
-            }},
-            mapping = cmp.mapping.preset.insert({
-                ['<C-u>'] = cmp.mapping.scroll_docs(-4),
-                ['<C-d>'] = cmp.mapping.scroll_docs(4),
-                ['<C-Space>'] = cmp.mapping.complete(),
-                ['<CR>'] = cmp.mapping.confirm({
-                    select = true
-                })
-            }),
-            window = {
-                completion = cmp.config.window.bordered(),
-                documentation = cmp.config.window.bordered()
-            },
-            formatting = {
-                fields = {'abbr', 'kind', 'menu'},
-                format = lspkind.cmp_format({
-                    mode = 'text'
-                })
-            }
-        })
+  },
+  {
+    "mason-org/mason-lspconfig.nvim",
+    lazy = false,
+    opts = {
+      automatic_enable = true,
+    },
+    dependencies = {
+      { "mason-org/mason.nvim", opts = {} },
+      "neovim/nvim-lspconfig",
+    },
+    event = { "BufReadPre", "BufNewFile" },
+    config = true,
+    keys = {
+      { "<C-n>", "<cmd>lua vim.lsp.completion.get() <CR>", mode = "i" },
+      { "gh",    "<cmd>lua vim.lsp.buf.hover()       <CR>" },
+      { "gd",    "<cmd>lua vim.lsp.buf.definition()  <CR>" },
+      { "gD",    "<cmd>lua vim.lsp.buf.declaration() <CR>" },
+    }
+  }
+}
 
-        local mason = require('mason')
-        local lspconfig = require('lspconfig')
-        local mason_lspconfig = require('mason-lspconfig')
+vim.opt.completeopt = { "menu", "menuone", "noselect", "noinsert", "preview" }
 
-        mason.setup()
-        mason_lspconfig.setup()
-        mason_lspconfig.setup_handlers({function(server_name)
-            lspconfig[server_name].setup({})
-        end})
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('my.lsp', {}),
+  callback = function(args)
+    local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
+    if client:supports_method('textDocument/completion') then
+      local chars = {}; for i = 32, 126 do table.insert(chars, string.char(i)) end
+      client.server_capabilities.completionProvider.triggerCharacters = chars
 
-        vim.api.nvim_create_autocmd("LspAttach", {
-            callback = function(_)
-                vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
-                vim.keymap.set('n', 'gf', '<cmd>lua vim.lsp.buf.formatting()<CR>')
-                vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')
-                vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
-                vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>')
-                vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
-                vim.keymap.set('n', 'gt', '<cmd>lua vim.lsp.buf.type_definition()<CR>')
-                vim.keymap.set('n', 'gn', '<cmd>lua vim.lsp.buf.rename()<CR>')
-                vim.keymap.set('n', 'ga', '<cmd>lua vim.lsp.buf.code_action()<CR>')
-                vim.keymap.set('n', 'ge', '<cmd>lua vim.diagnostic.open_float()<CR>')
-                vim.keymap.set('n', 'g]', '<cmd>lua vim.diagnostic.goto_next()<CR>')
-                vim.keymap.set('n', 'g[', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
-            end
-        })
-
-        vim.lsp.handlers["textDocument/publishDiagnostics"] =
-            vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-                virtual_text = false
-            })
+      vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
     end
-}}
+
+    if not client:supports_method('textDocument/willSaveWaitUntil')
+        and client:supports_method('textDocument/formatting') then
+      vim.keymap.set('n', '<S-A-f>', function()
+        vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 1000 })
+      end, { buffer = args.buf })
+      vim.api.nvim_create_autocmd('BufWritePre', {
+        group = vim.api.nvim_create_augroup('my.lsp', { clear = false }),
+        buffer = args.buf,
+        callback = function()
+          vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 1000 })
+        end,
+      })
+    end
+  end,
+})
 
 function merge_tables(t1, t2)
-    local merged = {}
-    for _, v in ipairs(t1) do
-        table.insert(merged, v)
-    end
-    for _, v in ipairs(t2) do
-        table.insert(merged, v)
-    end
-    return merged
+  local merged = {}
+  for _, v in ipairs(t1) do
+    table.insert(merged, v)
+  end
+  for _, v in ipairs(t2) do
+    table.insert(merged, v)
+  end
+  return merged
 end
 
 local is_vscode = vim.g.vscode == 1

@@ -26,13 +26,14 @@ vim.api.nvim_set_var('loaded_netrwPlugin', 1)
 -- キーバインド
 vim.g.mapleader = ' '
 vim.keymap.set('', '<Space>', '<Nop>', { noremap = true, silent = true })
+vim.keymap.set('n', 'x', '"_x')
 -- ショートカット
 vim.keymap.set('n', '<Leader>w', ':w<CR>')
 vim.keymap.set('n', '<Leader>q', ':q<CR>')
 vim.keymap.set('n', '<Leader>r', ':source $MYVIMRC<CR>')
 -- 画面分割
-vim.keymap.set('n', 'ss', ':split<Return><C-w>w')
-vim.keymap.set('n', 'sv', ':vsplit<Return><C-w>w')
+vim.keymap.set('n', '<Leader>sh', ':split<Return><C-w>w')
+vim.keymap.set('n', '<Leader>sv', ':vsplit<Return><C-w>w')
 -- アクティブウィンドウの移動
 vim.keymap.set('n', '<Leader>h', '<C-w>h')
 vim.keymap.set('n', '<Leader>k', '<C-w>k')
@@ -43,6 +44,24 @@ vim.keymap.set('n', '<Tab>', ':BufferNext<CR>')
 vim.keymap.set('n', '<S-Tab>', ':BufferPrevious<CR>')
 -- nvim-tree
 vim.keymap.set('n', '<Leader>e', ':NvimTreeFocus<CR>')
+
+-- LSP
+-- 候補を TAB で選択
+vim.keymap.set('i', '<Tab>', function()
+  return vim.fn.pumvisible() == 1 and "<C-n>" or "<Tab>"
+end, { expr = true })
+
+vim.keymap.set('i', '<s-Tab>', function()
+  return vim.fn.pumvisible() == 1 and "<C-p>" or "<s-Tab>"
+end, { expr = true })
+
+vim.keymap.set('i', '<Esc>', function()
+  return vim.fn.pumvisible() == 1 and "<C-e><Esc>" or "<Esc>"
+end, { expr = true })
+
+vim.keymap.set('i', '<CR>', function()
+  return vim.fn.pumvisible() == 1 and "<C-y>" or "<CR>"
+end, { expr = true })
 -- telescope
 -- vim.keymap.set('n', '<Leader>f', '<cmd>Telescope file_browser<CR>')
 -- vim.keymap.set('n', '<Leader>ff', '<cmd>Telescope find_files<CR>')

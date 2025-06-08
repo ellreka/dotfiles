@@ -65,3 +65,19 @@ set -gx PATH "$VOLTA_HOME/bin" $PATH
 
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
 
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
+
+# pyenv
+pyenv init - | source
+
+# Added by `rbenv init` on 2025年 1月15日 水曜日 14時26分27秒 JST
+status --is-interactive; and rbenv init - --no-rehash fish | source
+
+# Added by LM Studio CLI (lms)
+set -gx PATH $PATH /Users/s.tanigome/.lmstudio/bin
+# End of LM Studio CLI section
+
+alias claude="/Users/s.tanigome/.claude/local/claude"

@@ -11,6 +11,7 @@ ln -s -f "$DIR/fish/abbreviations.fish" ~/.config/fish
 ln -s -f "$DIR/fish/config.fish" ~/.config/fish
 ln -s -f "$DIR/fish/fish_plugins" ~/.config/fish
 ln -s -f "$DIR/fish/functions/fish_prompt.fish" ~/.config/fish/functions
+ln -s -f "$DIR/fish/functions/notify_done.fish" ~/.config/fish/functions
 # Run fisher update in fish shell
 fish -c 'fisher update'
 
@@ -33,3 +34,6 @@ ln -s -f "$DIR/nvim/init.lua" ~/.config/nvim
 
 # tmux
 ln -s -f "$DIR/tmux/.tmux.conf" ~/.tmux.conf
+
+# wezterm
+ln -s -f "$DIR/wezterm/.wezterm.lua" ~/.wezterm.lua
