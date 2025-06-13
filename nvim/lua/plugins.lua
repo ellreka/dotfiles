@@ -1,30 +1,36 @@
-local neovim_plugins = { {
+local neovim_plugins = {
   -- https://github.com/Shatur/neovim-ayu
-  'Shatur/neovim-ayu',
-  lazy = false,
-  config = function()
-    require('ayu').setup({
-      mirage = true
-    })
-    require('ayu').colorscheme()
-  end
-}, {
+  {
+    'Shatur/neovim-ayu',
+    lazy = false,
+    config = function()
+      require('ayu').setup({
+        mirage = false,
+        terminal = true,
+        overrides = {
+          LineNr = { fg = "None" }
+        }
+      })
+      require('ayu').colorscheme()
+    end
+  },
   -- https://github.com/nvim-treesitter/nvim-treesitter
-  'nvim-treesitter/nvim-treesitter',
-  lazy = false,
-  config = function()
-    require('nvim-treesitter.configs').setup({
-      ensure_installed = { "tsx", "typescript", "javascript", "fish", "php", "json", "yaml", "css", "html", "lua" },
-      highlight = {
-        enable = true
-      },
-      indent = {
-        enable = true
-      }
-    })
-  end
-} }
-
+  {
+    'nvim-treesitter/nvim-treesitter',
+    lazy = false,
+    config = function()
+      require('nvim-treesitter.configs').setup({
+        ensure_installed = { "tsx", "typescript", "javascript", "fish", "php", "json", "yaml", "css", "html", "lua" },
+        highlight = {
+          enable = true
+        },
+        indent = {
+          enable = true
+        }
+      })
+    end
+  }
+}
 local common_plugins = {
   {
     'echasnovski/mini.indentscope',
@@ -161,6 +167,20 @@ local common_plugins = {
     'windwp/nvim-autopairs',
     event = 'InsertEnter',
     opts = {}
+  },
+  -- AI
+  {
+    "github/copilot.vim",
+    lazy = false,
+  },
+  {
+    "greggh/claude-code.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    config = function()
+      require("claude-code").setup()
+    end
   },
   -- LSP
   {

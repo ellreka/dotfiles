@@ -43,7 +43,7 @@ vim.keymap.set('n', '<Leader>l', '<C-w>l')
 vim.keymap.set('n', '<Tab>', ':BufferNext<CR>')
 vim.keymap.set('n', '<S-Tab>', ':BufferPrevious<CR>')
 -- nvim-tree
-vim.keymap.set('n', '<Leader>e', ':NvimTreeFocus<CR>')
+vim.keymap.set('n', '<Leader>e', ':NvimTreeToggle<CR>')
 
 -- LSP
 -- 候補を TAB で選択
