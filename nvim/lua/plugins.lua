@@ -77,7 +77,7 @@ local common_plugins = {
           group_empty = true
         },
         filters = {
-          dotfiles = true
+          -- dotfiles = true
         }
       })
     end

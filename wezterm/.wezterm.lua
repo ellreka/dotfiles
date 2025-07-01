@@ -137,6 +137,11 @@ config.keys = {
     key = "r",
     mods = "LEADER",
     action = act.ReloadConfiguration
+  },
+  {
+    key = 'Enter',
+    mods = 'SHIFT',
+    action = wezterm.action.SendString('\n')
   }
 }
 
